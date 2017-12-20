@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  try1: 1
+  try2: 1
+  turn: 1
+  score: 1
+  user: one
+  game: one
+
+two:
+  try1: 1
+  try2: 1
+  turn: 1
+  score: 1
+  user: two
+  game: two

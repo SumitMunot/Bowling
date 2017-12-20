@@ -1,0 +1,91 @@
+<div style="height: 300px;  width: 80%">
+  <div>
+    <h2 class="headered">Bowling Strike <%= button_to  'New game', new_game_path, :method => "get"%></h2>
+    <div style="display: flex;justify-content: space-between;">
+      <div>
+        <h4>
+          Note: If you are new, please add players first.
+        </h4>
+      </div>
+      <div>
+        <%= button_to  'Add player', new_user_path, :method => "get"%>
+      </div>
+    </div>
+  </div>
+  <br>
+  <% @games.each do |game| %>
+  <div class="card">
+    <section class="card-info card-section">
+      <i class="ion-navicon menu"></i>
+      <i class="ion-ios-search search"></i>
+      
+      <section class="user row">
+        <h1 class="user-header">
+        
+        <h2 class="sub header">
+          Bowling Scores
+        </h2>
+        </h1>
+      </section>
+      
+      <section class="statistics">
+        <article class="statistic">
+          <h4 class="statistic-title">
+          Turn
+          </h4>
+          <h3 class="statistic-value">
+          <%= game.game_turn %>
+          </h3>
+        </article>
+        
+        <article class="statistic">
+          <h4 class="statistic-title">
+          Winner
+          </h4>
+          <h3 class="statistic-value">
+          <% if !(game.winner.empty?) %>
+          <%= User.find(game.winner.keys.first).name %>
+          <% end %>
+          </h3>
+        </article>
+      </section>
+      
+      <div class="dial">
+        <h4>
+        <%= button_to "Check Full Score Here", game_casings_path(game.id), :method => "get" %>
+        </h4>
+        <h4>
+        Game Number :
+        <%= game.id %>
+        </h4>
+      </div>
+    </section>
+    <section class="card-details card-section">
+      
+      <nav class="menu">
+        <article class="menu-item menu-item-active">
+          Player
+        </article>
+        <article class="menu-item">
+          Total Score
+        </article>
+      </nav>
+      
+      <dl class="leaderboard">
+        <% game.score_board.each do |k,v|%>
+        <dt>
+        <article class="progress">
+        <section class="progress-bar" style="width: 85%;"></section>
+      </article>
+      </dt>
+      <dd>
+      <div class="leaderboard-name"><%= User.find(k).name %></div>
+      <div class="leaderboard-value"><%= v %></div>
+      </dd>
+      <% end %>
+    </dl>
+  </section>
+</div>
+<br>
+<% end %>
+</div>

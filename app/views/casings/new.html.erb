@@ -1,0 +1,5 @@
+<h1 class= "header">Play your casing</h1>
+<%= render 'form', casing: @casing  %>
+<div class="right">
+<%= button_to  'Back to Player Dashboard', game_casings_path(@game_id), :method => "get" %>
+</div>

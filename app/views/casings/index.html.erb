@@ -1,0 +1,45 @@
+<div class="header">Player Dashboard</div>
+<% @casings.each do |id, val| %>
+<div class="table-users">
+  <table >
+    <thead>
+      <tr>
+        <th scope="col">Player Name</th>
+        <th scope="col">Turn#</th>
+        <th scope="col">Try1</th>
+        <th scope="col">Try2</th>
+        <th scope="col">Turn Score</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <% val.each do |casings| %>
+    <tbody>
+      <tr>
+        <td><%= casings.user.name %></td>
+        <td><%= casings.turn %></td>
+        <td><%= casings.try1 %></td>
+        <td><%= casings.try2 %></td>
+        <td><%= casings.score %></td>
+        <td><%= casings.status %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
+<br>
+<% end %>
+<br>
+<% if (@game_turn <= 10) %>
+<div class="topright">
+  <%= button_to "Play your turn", new_game_casing_path(@game_id), :method => "get" %>
+</div>
+
+<div class="bottomright">
+  <%= button_to "Game Score Board", games_path, :method => "get" %>
+</div>
+<% else %>
+<%= javascript_tag "alert('Game Finish ')" %>
+<div class="topright">
+  <%= button_to 'Game Score Board', games_path, :method => "get" %>
+</div>
+<% end %>

@@ -1,0 +1,40 @@
+<%= form_with(model: casing, local: true, url: game_casings_path) do |form| %>
+<% if casing.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(casing.errors.count, "error") %> prohibited this casing from being saved:</h2>
+  <ul>
+    <% casing.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="table-users">
+  
+  
+  <table >
+    <thead>
+      <tr>
+        <th scope="col">Try1</th>
+        <th scope="col">Try2</th>
+        <th scope="col">Turn</th>
+        <th scope="col">Choose Player</th>
+        <th scope="col">Game</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        
+        <td><%= form.number_field :try1, id: :casing_try1 %></td>
+        <td><%= form.number_field :try2, id: :casing_try2 %></td>
+        <td><%= form.number_field :turn, id: :casing_turn %></td>
+        <td><%= form.collection_select :user_id, @players,:id,:name, include_blank: false %></td>
+        <td><%= form.text_field :game_id, id: :casing_game_id, value: @game_id, disabled: true %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class= "centered">
+  <%= form.submit %>
+</div>
+<% end %>

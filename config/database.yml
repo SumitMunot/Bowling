@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  adapter: postgresql
+  host:    localhost
+  encoding: unicode
+  pool:     5
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: game_bowling_dev
+
+test:
+  <<: *default
+  database: game_bowling_test
+
+production:
+  <<: *default
+  database: game_bowling_prod

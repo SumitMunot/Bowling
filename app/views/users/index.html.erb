@@ -1,0 +1,23 @@
+<h1 class="header">Users</h1>
+<div class="table-users">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Player Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="topright">
+  <%= button_to "New Player", new_user_path  , :method => "get" %>
+</div>
+<div class="bottomright">
+  <%= button_to "Games Dashboard", games_path  , :method => "get" %>
+</div>

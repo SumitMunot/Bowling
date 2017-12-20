@@ -1,0 +1,42 @@
+<div class="alert success">
+  <span class="closebtn">&times;</span>
+  <strong>Success!</strong>
+</div>
+<div class="table-users">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Try1</th>
+        <th scope="col">Try2</th>
+        <th scope="col">Turn</th>
+        <th scope="col">Status</th>
+        <th scope="col">Player Name</th>
+        <th scope="col">Game Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @casing.try1 %></td>
+        <td><%= @casing.try2 %></td>
+        <td><%= @casing.turn %></td>
+        <td><%= @casing.status %></td>
+        <td><%= @casing.user.name%></td>
+        <td><%= @casing.game.id %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="center">
+  <%= button_to "Back to Dashboard", game_casings_path(@casing.game.id), :method => "get" %>
+</div>
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+for (i = 0; i < close.length; i++) {
+close[i].onclick = function(){
+var div = this.parentElement;
+div.style.opacity = "0";
+setTimeout(function(){ div.style.display = "none"; }, 600);
+}
+}
+</script>
